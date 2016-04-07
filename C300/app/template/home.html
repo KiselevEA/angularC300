@@ -1,0 +1,120 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h4 class="table-headline">{{caption.title}}</h4>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Таблица для десктопных компьютеров -->
+    <div class="container-fluid">
+        
+        <div class="row content-row">
+        	<div class="col-xs-12">
+
+	            <table class='report-table visible-lg'>
+	                <tr class="report-table__header">
+						<th ng-repeat="item in header">{{ item.name }}</th>
+
+	                </tr>
+	                <tr class="report-table__row" ng-repeat="report in reportObj">
+	                    <td class="report-table__cell">{{report.area_number}}</td>	                    
+	                    <td class="report-table__cell">{{report.short_name }}</td>
+						<td class="report-table__cell">{{report.saldo_in }}</td>
+						<td class="report-table__cell">{{report.value_a[0] }}</td>
+	                    <td class="report-table__cell">{{report.doc_a[0] }}</td>
+	                    <td class="report-table__cell">{{report.month_a[0] }}</td>
+	                    <td class="report-table__cell">{{report.date_a[0]}}</td>
+	                    <td class="report-table__cell">{{report.value_p[0] }}</td>
+	                    <td class="report-table__cell">{{report.doc_p[0] }}</td>
+						<td class="report-table__cell">{{report.month_p[0] }}</td>
+	                    <td class="report-table__cell">{{report.date_p[0] }}</td>                  
+	                    <td class="report-table__cell">{{report.saldo_out }}</td>
+	                    <td class="report-table__cell">{{report.is_responsible ? "Да" : "Нет" }}</td>
+	                    <td class="report-table__cell">{{report.house }}</td>	                    
+	                    <td class="report-table__cell">{{report.account }}</td>
+	                </tr>
+
+	            </table>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+			
+	</div><!-- container-fluid -->
+
+	<!-- Таблица для планшетных и мобильных устройств -->
+	<div class="container">
+		<div class="row mobile-table hidden-lg" ng-repeat="report in reportObj">
+				<h4 class="mobile-headline"> <input type="checkbox" ng-model="showList" /> {{ $index + 1 }}. {{report.short_name }} (Квартитра: {{report.area_number}})</h4>
+				<div class="col-xs-5">
+					<ul class="list-unstyled report-list" ng-show="showList">
+						<li class="report-list__header" ng-repeat="item in header">{{item.name}}</li>
+					</ul>
+				</div>
+				<div class="col-xs-7">
+					<ul class="list-unstyled report-list" ng-show="showList">
+						<li class="report-list__item">{{report.area_number}}</li>	                    
+	                    <li class="report-list__item">{{report.short_name }}</li>
+						<li class="report-list__item">{{report.saldo_in }}</li>
+						<li class="report-list__item">{{report.value_a[0] }}</li>
+	                    <li class="report-list__item">{{report.doc_a[0] }}</li>
+	                    <li class="report-list__item">{{report.month_a[0] }}</li>
+	                    <li class="report-list__item">{{report.date_a[0]}}</li>
+	                    <li class="report-list__item">{{report.value_p[0] }}</li>
+	                    <li class="report-list__item">{{report.doc_p[0] }}</li>
+						<li class="report-list__item">{{report.month_p[0] }}</li>
+	                    <li class="report-list__item">{{report.date_p[0] }}</li>                  
+	                    <li class="report-list__item">{{report.saldo_out }}</li>
+	                    <li class="report-list__item">{{report.is_responsible ? "Да" : "Нет" }}</li>
+	                    <li class="report-list__item">{{report.house }}</li>	                    
+	                    <li class="report-list__item">{{report.account }}</li>
+	                </ul>    
+				</div>
+		</div>
+
+		<div class="row content-row">
+			<div class="clearfix"></div>
+				<!-- Итоговая таблица -->
+			<div class="col-xs-12">
+				<h4 class="result-headline">Итого:</h4>
+	            <table class="result-table hidden-xs">
+	            	<tr class="result-table__row">
+	            		<th class="result-table__cell">Входящее сальдо</th>
+	            		<th class="result-table__cell">Исходящее сальдо</th>
+	            		<th class="result-table__cell">Начисление</th>
+	            		<th class="result-table__cell">Оплата</th>
+	            	</tr>
+	            	<tr class="result-table__row">
+	            		<td class="result-table__cell">{{ footer.saldo_in }}</td>
+	            		<td class="result-table__cell">{{ footer.saldo_out }}</td>
+	            		<td class="result-table__cell">{{ footer.value_a[0] }}</td>
+	            		<td class="result-table__cell">{{ footer.value_p[0] }}</td>
+	            	</tr>	            	
+	            </table>
+
+	            <table class="result-table-ver visible-xs">
+	            	<tr class="result-table__row">
+	            		<th class="result-table__cell">Входящее сальдо</th>
+						<td class="result-table__cell">{{ footer.saldo_in }}</td>
+	            	<tr class="result-table__row">
+	            	
+	            	</tr>	
+	            		<th class="result-table__cell">Исходящее сальдо</th>
+	            		<td class="result-table__cell">{{ footer.saldo_out }}</td>
+
+	            		
+	            	</tr>
+
+	            	<tr class="result-table__row">
+	            		<th class="result-table__cell">Начисление</th>
+	            		<td class="result-table__cell">{{ footer.value_a[0] }}</td>
+	            	</tr>
+	            	<tr class="result-table__row">
+	            		<th class="result-table__cell">Оплата</th>
+	            		<td class="result-table__cell">{{ footer.value_p[0] }}</td>
+	            	</tr>	            	
+	            </table>	            
+            </div>
+        </div> 
+
+    </div>
